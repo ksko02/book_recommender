@@ -11,7 +11,7 @@ To train and evaluate our systems, we used the open [goodbooks-10k](https://gith
 The description and analysis of the data can be found in the 1.0-initial_data_exploration.ipynb
 
 ## Demo
-![](demo.gif)
+![](figures/demo.gif)
 
 [Full demo video](https://drive.google.com/file/d/16WNmHHeeOHjvKeEKwjL5OXO3IxJCNzvT/view?usp=sharing) with good quality
 

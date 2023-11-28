@@ -10,7 +10,7 @@ users_results = {}
 
 
 
-datafile = open('data/interim/books_information.csv', 'r')
+datafile = open('data/interim/books_information.csv', 'r', encoding='utf-8')
 books_rows = csv.reader(datafile)
 
 books = []

@@ -110,9 +110,9 @@ def data_loading():
 
     ratings = pd.read_csv('https://raw.githubusercontent.com/zygmuntz/goodbooks-10k/master/ratings.csv')
 
-    books_information = pd.read_csv('../data/interim/books_information.csv')
+    books_information = pd.read_csv('./data/interim/books_information.csv')
 
-    model = keras.models.load_model('../models/user_based_model.keras')
+    model = keras.models.load_model('./models/user_based_model.keras')
 
     features = ['average_rating', 'original_publication_year', 'authors']
 

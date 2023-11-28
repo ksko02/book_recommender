@@ -1,6 +1,10 @@
 # Book Recommender 
 Book recommendation system using Deep Learning
 
+Made by:
+1. Oksana Konovalova, o.konovalova@innopolis.university
+2. Adelina Kildeeva, a.kildeeva@innopolis.university
+
 ## Project topic
 Recommendation systems can be found in almost every area of life, from shopping on marketplaces to choosing a TV show for the weekend. 
 We wanted to study the topic of recommendations in more detail, understand the work of various methods and create our own recommendation system for books. 
@@ -28,12 +32,16 @@ The description and analysis of the data can be found in the 1.0-initial_data_ex
 ### Second option: run the bot locally
 1. Clone the repository
 
-2. Install the required packages
+2. Get a telegram token and put it in the 'boot_key.key' file.
+
+3. Install the required packages
 ```
 pip install -r requirements.txt
 ```
 
-3. Run the bot
+4. Run the bot
 ```
 python bot.py
 ```
+## Learn more
+Learn more about the project [here](Final_technical_report.pdf)

@@ -101,18 +101,18 @@ def top_recommend_books(user_ratings, model, cosine_sim, ratings, books_informat
     
     top_recommendations = predict_data.sort_values(by='predicted_rating', ascending=False).head(num_recommendations)
     
-    recommended_book_ids = top_recommendations['book']
+    recommended_book_ids = top_recommendations['book_id']
     
     return books_information[books_information['book_id'].isin(recommended_book_ids)]
 
 
 def data_loading():
 
-    ratings = pd.read_csv('./data/interim/train.csv')
+    ratings = pd.read_csv('https://raw.githubusercontent.com/zygmuntz/goodbooks-10k/master/ratings.csv')
 
-    books_information = pd.read_csv('./data/interim/books_information.csv')
+    books_information = pd.read_csv('../data/interim/books_information.csv')
 
-    model = keras.models.load_model('./models/train_user_based_model.keras')
+    model = keras.models.load_model('../models/user_based_model.keras')
 
     features = ['average_rating', 'original_publication_year', 'authors']
 
@@ -124,6 +124,8 @@ def data_loading():
 
     cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 
+    books_information = books_information.drop(['text_features'], axis=1)
+
     return ratings, books_information, model, cosine_sim 
 
 
@@ -131,8 +133,8 @@ def get_recommendation(user_ratings):
 
     ratings, books_information, model, cosine_sim = data_loading()
 
-    book_id = [item[0] for item in user_ratings]
-    book_ratings = [item[1] for item in user_ratings]
+    book_id = [int(item[0]) for item in user_ratings]
+    book_ratings = [int(item[1]) for item in user_ratings]
 
     user_ratings = pd.DataFrame({  
         'book_id': book_id,

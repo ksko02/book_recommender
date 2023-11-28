@@ -108,11 +108,11 @@ def top_recommend_books(user_ratings, model, cosine_sim, ratings, books_informat
 
 def data_loading():
 
-    ratings = pd.read_csv('https://raw.githubusercontent.com/zygmuntz/goodbooks-10k/master/ratings.csv')
-
-    model = keras.models.load_model('./models/user_based_model.keras')
+    ratings = pd.read_csv('./data/interim/train.csv')
 
     books_information = pd.read_csv('./data/interim/books_information.csv')
+
+    model = keras.models.load_model('./models/train_user_based_model.keras')
 
     features = ['average_rating', 'original_publication_year', 'authors']
 
@@ -127,7 +127,7 @@ def data_loading():
     return ratings, books_information, model, cosine_sim 
 
 
-def run_model(user_ratings):
+def get_recommendation(user_ratings):
 
     ratings, books_information, model, cosine_sim = data_loading()
 

@@ -1,0 +1,7 @@
+keras==2.15.0
+matplotlib==3.6.2
+numpy==1.23.5
+pandas==1.5.3
+scikit-learn==1.2.2
+telebot==0.0.5
+tensorflow==2.15.0

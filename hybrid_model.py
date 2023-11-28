@@ -69,12 +69,11 @@ def recommend_books_content_based(user_ratings, cosine_sim, ratings):
             weighted_sum += similarity * rated_book['rating']
             similarity_sum += abs(similarity)
 
-        if similarity_sum != 0:
-            similarity_sum = max(0.7, similarity_sum)
+        if similarity_sum > 0.1:
             predict_data.at[i, 'predicted_rating'] = weighted_sum / similarity_sum
             
         else:
-            predict_data.at[i, 'predicted_rating'] = 1
+            predict_data.at[i, 'predicted_rating'] = 3
             
     predict_data = predict_data[~predict_data['book_id'].isin(user_ratings['book_id'])]
 
@@ -90,7 +89,7 @@ def hybrid_model(user_ratings, model, cosine_sim, ratings):
     merged_df = pd.merge(user_based_predict, content_based_predict, on='book_id', suffixes=('_user', '_content'))
 
     # Calculate the overall rating using the specified formula
-    merged_df['predicted_rating'] = merged_df['predicted_rating_user'] * 0.6 + merged_df['predicted_rating_content'] * 0.4
+    merged_df['predicted_rating'] = merged_df['predicted_rating_user'] * 0.4 + merged_df['predicted_rating_content'] * 0.6
     
     return merged_df[['book_id', 'predicted_rating']]
 
